@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tutorial Vue</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ producto }}</h1>
+      <p>{{ descripcion }}</p>
+      
+      <div class="cart">{{ carro + ' productos'}}</div>
+
+      <p v-if="stock > 5">Disponible</p>
+      <p v-else-if="stock > 0">Últimas Unidades!!</p>
+      <p v-else>No disponible</p>
+      
+      <ul>
+        <li v-for="detalle in detalles">{{detalle}}</li>
+      </ul>
+
+      <p v-if="oferta && stock>0">OFERTAAA!!!</p>
+
+      <div  class="product-image">
+        <a :href="url"><img :src="imagen" title="Calcetin azul"></a>
+      </div>
+      <div v-for="color in colores" :key="color.id">{{ color.color }}</div>
+
+      <button class="button" v-on:click="carro++">¡Comprar!</button>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
