@@ -14,10 +14,23 @@ const app=Vue.createApp({
             oferta: true,
             detalles: ['50% algodón', '30% lana', '20% otros materiales'],
             colores: [
-                { id: 'A020', color: 'Green' },
-                { id: 'B022', color: 'Blue' }
+                { id: 'A020', color: 'Green', imagen: './assets/images/socks_green.jpg' },
+                { id: 'B022', color: 'Blue', imagen: './assets/images/socks_blue.jpg' }
             ],
             carro: 0,
+        }
+    },
+    methods:{
+        anadirCarro(){
+            this.carro +=1
+        },
+        eliminarCarro() {
+            if (this.carro >= 1) {
+                this.carro -= 1
+            }
+        },
+        actualizarImagen(urlImagen){
+            this.imagen= urlImagen
         }
     }
 })

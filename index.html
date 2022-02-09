@@ -24,11 +24,12 @@
       <p v-if="oferta && stock>0">OFERTAAA!!!</p>
 
       <div  class="product-image">
-        <a :href="url"><img :src="imagen" title="Calcetin azul"></a>
+        <a :href="url"><img :src="imagen" title="Calcetin azul" :class="{'out-of-stock-img': stock == 0}"></a>
       </div>
-      <div v-for="color in colores" :key="color.id">{{ color.color }}</div>
+      <div v-for="color in colores" :key="color.id" @mouseover="actualizarImagen(color.imagen)" class="color-circle" :style="{backgroundColor: color.color}"></div>
 
-      <button class="button" v-on:click="carro++">¡Comprar!</button>
+      <button class="button" @click="anadirCarro" :disabled="stock == 0" :class="{disabledButton: stock == 0}">¡Comprar!</button>
+      <button class="button" @click="eliminarCarro">Eliminar Item</button>
     </div>
     <script src="./main.js"></script>
   </body>
